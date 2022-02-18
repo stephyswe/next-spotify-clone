@@ -3,9 +3,16 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "husky": "husky install",
+    "lint": "next lint",
+    "prettier": "prettier --write \"./**/*.{ts,tsx,js,jsx}\"",
+    "prettier:check": "prettier --check \"./**/*.{ts,tsx,js,jsx}\"",
+    "validate": "bash ./validate.sh",
+    "typecheck": "tsc -b"
   },
   "dependencies": {
+    "husky": "^7.0.4",
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
@@ -14,6 +21,8 @@
     "@types/node": "17.0.4",
     "@types/react": "17.0.38",
     "autoprefixer": "^10.4.0",
+    "eslint": "8.9.0",
+    "eslint-config-next": "12.1.0",
     "postcss": "^8.4.5",
     "prettier": "^2.5.1",
     "prettier-plugin-tailwindcss": "^0.1.1",

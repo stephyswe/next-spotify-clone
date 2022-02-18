@@ -1,0 +1,8 @@
+static/
+server/
+next.config.js
+postcss.config.js
+tailwind.config.js
+.next
+next-env.d.ts
+prettier.config.js
