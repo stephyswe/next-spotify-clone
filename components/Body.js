@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Search from './Search'
 import Poster from './Poster'
 import Track from './Track'
+import { SongList } from './SongList'
 
 export default function Body({ chooseTrack, spotifyApi }) {
   const [search, setSearch] = useState('')
@@ -10,7 +11,7 @@ export default function Body({ chooseTrack, spotifyApi }) {
 
   // Searching...
   useEffect(() => {
-    if (!search) return setData([])
+    if (!search) return setData(newReleases)
     let cancel = false
 
     spotifyApi.searchTracks(search).then((res) => {
@@ -49,15 +50,6 @@ export default function Body({ chooseTrack, spotifyApi }) {
     })
   }, [spotifyApi])
 
-  const SongList = ({ Element, unlimited }) => {
-    let songData = data
-    if (!search) setData(newReleases)
-    if (!unlimited) songData = data.slice(0, 4)
-    return songData.map((track) => (
-      <Element key={track.id} track={track} chooseTrack={chooseTrack} />
-    ))
-  }
-
   return (
     <section className="ml-24 flex-grow space-y-8 bg-black py-4 md:mr-2.5 md:max-w-6xl">
       <Search search={search} setSearch={setSearch} />
@@ -65,7 +57,7 @@ export default function Body({ chooseTrack, spotifyApi }) {
         className="grid h-96 grid-cols-1 gap-x-4 gap-y-8 overflow-y-scroll 
       p-4 py-4 scrollbar-hide sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 "
       >
-        <SongList Element={Poster} />
+        <SongList Element={Poster} data={data} chooseTrack={chooseTrack} />
       </div>
 
       <div className="absolute ml-6 flex min-w-full gap-x-8 md:relative">
@@ -96,7 +88,12 @@ export default function Body({ chooseTrack, spotifyApi }) {
           bg-[#0D0D0D] p-3 scrollbar-thin scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500 sm:h-[200px]
            sm:w-full md:h-96 md:w-full lg:w-full"
           >
-            <SongList Element={Track} unlimited />
+            <SongList
+              Element={Track}
+              unlimited
+              data={data}
+              chooseTrack={chooseTrack}
+            />
           </div>
         </div>
       </div>
