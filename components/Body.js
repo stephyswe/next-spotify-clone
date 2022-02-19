@@ -62,8 +62,8 @@ export default function Body({ chooseTrack, spotifyApi }) {
     <section className="ml-24 flex-grow space-y-8 bg-black py-4 md:mr-2.5 md:max-w-6xl">
       <Search search={search} setSearch={setSearch} />
       <div
-        className="grid h-96 grid-cols-2 gap-x-4 gap-y-8 overflow-y-scroll 
-      p-4 py-4 scrollbar-hide lg:grid-cols-3 xl:grid-cols-4"
+        className="grid h-96 grid-cols-1 gap-x-4 gap-y-8 overflow-y-scroll 
+      p-4 py-4 scrollbar-hide sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 "
       >
         <SongList Element={Poster} />
       </div>
@@ -92,9 +92,9 @@ export default function Body({ chooseTrack, spotifyApi }) {
             {search && data ? 'Tracks' : 'New Releases'}
           </h2>
           <div
-            className="scrollbar-thin scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500 
-          h-[1000px] w-[830px] space-y-3 overflow-y-scroll rounded-2xl 
-          border-2 border-[#262626] bg-[#0D0D0D] p-3 scrollbar-hide md:h-96"
+            className="scrollbar-thumb-rounded h-[200px] w-[250px] space-y-3 overflow-y-scroll rounded-2xl border-2 border-[#262626] 
+          bg-[#0D0D0D] p-3 scrollbar-thin scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500 sm:h-[200px]
+           sm:w-full md:h-96 md:w-full lg:w-full"
           >
             <SongList Element={Track} unlimited />
           </div>
