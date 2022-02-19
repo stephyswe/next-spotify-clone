@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import Search from './Search'
 import Poster from './Poster'
 import Track from './Track'
-import { SongList } from './SongList'
+import Genre from './Genre'
+import SongList from './SongList'
 
 export default function Body({ chooseTrack, spotifyApi }) {
   const [search, setSearch] = useState('')
@@ -62,21 +63,7 @@ export default function Body({ chooseTrack, spotifyApi }) {
 
       <div className="absolute ml-6 flex min-w-full gap-x-8 md:relative">
         {/* Genres */}
-        <div className="hidden max-w-[270px] xl:inline">
-          <h2 className="mb-3 font-bold text-white">Genres</h2>
-          <div className="mb-3 flex flex-wrap gap-x-2 gap-y-2.5">
-            <div className="genre">Classic</div>
-            <div className="genre">House</div>
-            <div className="genre">Minimal</div>
-            <div className="genre">Hip-hop</div>
-            <div className="genre">Electronic</div>
-            <div className="genre">Chillout</div>
-            <div className="genre">Blues</div>
-            <div className="genre">Country</div>
-            <div className="genre">Techno</div>
-          </div>
-          <button className="btn">All Genres</button>
-        </div>
+        <Genre />
 
         {/* Tracks */}
         <div className="w-full pr-11">
