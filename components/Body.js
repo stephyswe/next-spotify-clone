@@ -1,25 +1,15 @@
 import { useEffect, useState } from 'react'
-import { useSession } from 'next-auth/react'
 import Search from './Search'
 import Poster from './Poster'
 
 export default function Body({ chooseTrack, spotifyApi }) {
-  const { data: session } = useSession()
-  const accessToken = session.accessToken
   const [search, setSearch] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const [newReleases, setNewReleases] = useState([])
 
-  useEffect(() => {
-    if (!accessToken) return
-    spotifyApi.setAccessToken(accessToken)
-  }, [accessToken])
-
   // Searching...
   useEffect(() => {
     if (!search) return setSearchResults([])
-    if (!accessToken) return
-
     let cancel = false
 
     spotifyApi.searchTracks(search).then((res) => {
@@ -38,12 +28,10 @@ export default function Body({ chooseTrack, spotifyApi }) {
       )
     })
     return () => (cancel = true)
-  }, [search, accessToken])
+  }, [search])
 
   // New Releases...
   useEffect(() => {
-    if (!accessToken) return
-
     spotifyApi.getNewReleases().then((res) => {
       setNewReleases(
         res.body.albums.items.map((track) => {
@@ -57,10 +45,11 @@ export default function Body({ chooseTrack, spotifyApi }) {
         })
       )
     })
-  }, [accessToken])
+  }, [])
 
   function bodyPoster(data = newReleases) {
-    if (searchResults.length) data = searchResults.slice(0, 4)
+    if (searchResults.length) data = searchResults
+    data = data.slice(0, 4)
     return (
       <>
         {data.map((track) => (
