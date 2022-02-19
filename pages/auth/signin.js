@@ -11,7 +11,7 @@ export default function Signin({ providers }) {
 
   useEffect(() => {
     if (session) router.push('/')
-  }, [session])
+  }, [session, router])
 
   return (
     <div className="flex flex-col items-center space-y-8 pt-40">

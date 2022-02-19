@@ -37,7 +37,11 @@ export default function Dashboard() {
         chooseTrack={chooseTrack}
         accessToken={accessToken}
       />
-      <Right />
+      <Right
+        spotifyApi={spotifyApi}
+        chooseTrack={chooseTrack}
+        accessToken={accessToken}
+      />
     </main>
   )
 }

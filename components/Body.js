@@ -30,7 +30,7 @@ export default function Body({ chooseTrack, spotifyApi }) {
       )
     })
     return () => (cancel = true)
-  }, [search])
+  }, [search, spotifyApi])
 
   // New Releases...
   useEffect(() => {
@@ -47,7 +47,7 @@ export default function Body({ chooseTrack, spotifyApi }) {
       setData(data)
       setNewReleases(data)
     })
-  }, [])
+  }, [spotifyApi])
 
   const SongList = ({ Element, unlimited }) => {
     let songData = data
