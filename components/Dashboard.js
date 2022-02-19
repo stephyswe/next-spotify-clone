@@ -32,16 +32,8 @@ export default function Dashboard() {
   return (
     <main className="flex min-h-screen min-w-max bg-black">
       <Sidebar />
-      <Body
-        spotifyApi={spotifyApi}
-        chooseTrack={chooseTrack}
-        accessToken={accessToken}
-      />
-      <Right
-        spotifyApi={spotifyApi}
-        chooseTrack={chooseTrack}
-        accessToken={accessToken}
-      />
+      <Body spotifyApi={spotifyApi} chooseTrack={chooseTrack} />
+      <Right spotifyApi={spotifyApi} chooseTrack={chooseTrack} />
     </main>
   )
 }

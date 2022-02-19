@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { useSession } from 'next-auth/react'
 import { HiOutlineShieldCheck } from 'react-icons/hi'
 import { MdOutlineSettings } from 'react-icons/md'
 import { BiBell } from 'react-icons/bi'
@@ -7,7 +6,7 @@ import { ViewGridIcon } from '@heroicons/react/solid'
 import Dropdown from './Dropdown'
 import RecentlyPlayed from './RecentlyPlayed'
 
-export default function Right({ spotifyApi, chooseTrack, accessToken }) {
+export default function Right({ spotifyApi, chooseTrack }) {
   const [recentlyPlayed, setRecentlyPlayed] = useState([])
 
   // Recently Played Tracks...
