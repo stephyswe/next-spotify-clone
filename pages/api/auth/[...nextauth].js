@@ -59,8 +59,10 @@ export default NextAuth({
   ],
   callbacks: {
     async jwt({ token, user, account }) {
+      console.log('jwt run')
       // Initial sign in
       if (account && user) {
+        console.log('account run')
         return {
           accessToken: account.access_token,
           accessTokenExpires: Date.now() + account.expires_in * 1000,
@@ -78,6 +80,7 @@ export default NextAuth({
       return refreshAccessToken(token)
     },
     async session({ session, token }) {
+      console.log('session run')
       session.user = token.user
       session.accessToken = token.accessToken
       session.error = token.error
